@@ -1,0 +1,45 @@
+package com.cachatto.cemm.repository;
+
+import com.cachatto.cemm.model.Device;
+import com.cachatto.cemm.model.User;
+
+import org.junit.Test;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface DeviceRepository<device_type> extends JpaRepository<Device, Long> {
+
+    Page<Device> findByTenantId(Integer id, Pageable pageable);
+    List<Device> findByTenantId(Integer tenantId);
+
+    @Query("SELECT d FROM Device d WHERE d.tenantId = :id and lower(d.deviceName) LIKE %:device% and lower(d.owner) LIKE %:owner% and lower(d.status) like :status% and lower(d.deviceType) like %:platform%")
+    Page<Device> searchByTenantIdAndDeviceNameContainingAndOwnerContainingAndStatusStartingWithAndDeviceTypeContaining(Integer id, @Param("device") String device,@Param("owner") String owner,@Param("status") String status,String platform, Pageable page);
+	
+//    @Query("SELECT d FROM Device d WHERE d.deviceType = :deviceType")
+//    List<Device> findByDeviceType(String deviceType);
+    
+//       long countByDeviceType(String deviceType);
+    
+    
+    
+    //this Query using COUNT Statement.
+    @Query("SELECT COUNT(device_type) FROM Device WHERE deviceType = :deviceType " )
+	Long findByDeviceType(String deviceType);
+    
+    
+    @Query("SELECT d FROM Device WHERE deviceType = :android " )
+    Page<Device> searchByTenantIdAndDeviceNameContainingAndOwnerContainingAndDeviceTypeContaining(Integer id, @Param("device") String device,@Param("owner") String owner);
+
+
+    
+    
+	
+
+}

@@ -1,0 +1,39 @@
+package com.cachatto.cemm.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.cachatto.cemm.model.Device;
+
+import com.cachatto.cemm.service.DeviceService;
+
+@Controller
+@RequestMapping("/admin/deviceType")
+public class DeviceTypeController {
+	@Autowired
+    DeviceService deviceService;
+	@GetMapping("/deviceCount")
+	public String showDevicesType( @RequestParam(required = false) String platform, Model model){
+
+
+
+Page<Device> page = deviceService.getDeviceType( platform);
+List<Device> devices = page.getContent();
+
+
+model.addAttribute("totalPages", page.getTotalPages());
+model.addAttribute("totalItems", page.getTotalElements());
+model.addAttribute("deviceList", devices );
+return "deviceType";
+}
+	
+}
+
+	

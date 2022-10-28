@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Devices - CACHATTO Secure Container</title>
+	<link rel="stylesheet" th:href="@{/css/ext/bootstrap.min.css}" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">
+
+</head>
+<body>
+<div class="csc-container">
+	<main class="main-content">
+		<nav class="card2 csc-breadcrumb">
+			<!--<ul>
+				<li class="breadcrumb-home"><a th:href="@{/admin/dashboard}"></a></li>
+				<li class="active"><a href="#">DevicesType</a></li>
+			</ul>-->
+			
+			<ul>
+                <li class="breadcrumb-home"><a th:href="@{/admin/dashboard}"></a></li><li><a th:href="@{/admin/deviceType/deviceCount}">DevicesType</a></li>
+                <li class="active"><a href="#" th:text="*{devicesType.android}"></a></li>
+            </ul>
+		</nav>
+		<section class="dashboard-cards">
+
+			<div class="card2 dashboard-card device-item">
+				<div>
+					<section  class="card-icon-base device-android">
+						<figure class="card-icon"></figure>
+						
+					</section>
+					
+					<h2 class="card-title">Android<p class="digit" th:text="${android}"></p></h2>
+					
+					
+				</div>
+			</div>
+			<div class="card2 dashboard-card device-item">
+				<div>
+					<section  class="card-icon-base device-ios">
+						<figure class="card-icon"></figure>
+						
+					</section>
+					<h2 class="card-title">Ios<p class="digit" th:text="${ios}"></p></h2>
+					
+					
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<aside class="card card-sidebar">
+		<div class="sidebar-top">
+			<div class="login-title">
+				<img src="/images/csc-icon.png" srcset="/images/csc-icon.png 1x, /images/csc-icon@2x.png 2x" class="csc-icon">
+				<img src="/images/csc-logo.png" srcset="/images/csc-logo.png 1x, /images/csc-logo@2x.png 2x" class="csc-logo">
+			</div>
+			<nav class="sidebar-global-menu">
+				<ul class="menu-list">
+					<li class="menu-dashboard"><a th:href="@{/admin/dashboard}">Dashboard</a></li>
+					<li class="menu-device active"><a href="#">Devices</a></li>
+					<li class="menu-user"><a th:href="@{/admin/user/users}">Users</a></li>
+					<li class="menu-group"><a th:href="@{/admin/group/groupDashboard}">Groups</a></li>
+					<li class="menu-policies"><a th:href="@{/admin/policy/policies}">Policies</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div th:replace="layouts :: sidebar-bottom"></div>
+	</aside>
+</div>
+</body>
+</html>

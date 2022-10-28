@@ -1,0 +1,34 @@
+package com.cachatto.cemm.service;
+
+import java.util.HashMap;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cachatto.cemm.repository.DeviceRepository;
+
+
+@Service
+public class DeviceTypeService {
+
+	@Autowired
+	DeviceRepository deviceRepository;
+	
+	
+	public HashMap<String,Long> deviceCount(){
+		
+		HashMap<String,Long> count = new HashMap<>();
+		
+		Long androidCount, iosCount;
+		androidCount = deviceRepository.findByDeviceType("Android");
+		iosCount = deviceRepository.findByDeviceType("Ios");
+		
+		
+		
+		count.put("android", androidCount);
+		count.put("ios", iosCount);
+		
+		
+		return count;
+	}
+}
