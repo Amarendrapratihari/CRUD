@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import com.springboot.crudapp.model.Employee;
 import com.springboot.crudapp.service.EmployeeService;
 
@@ -22,7 +21,6 @@ public class EmployeeController {
 	public String viewHomePage(Model model) {
 		model.addAttribute("listEmployees", employeeService.getAllEmployees());
 		return "index";
-
 	}
 
 	@GetMapping("/showNewEmployeeform")
@@ -31,7 +29,6 @@ public class EmployeeController {
 		Employee employee = new Employee();
 		model.addAttribute("employee", employee);
 		return "new_employee";
-
 	}
 
 	
@@ -41,11 +38,9 @@ public class EmployeeController {
 		// Save Employee To Database!!!!!!
 		employeeService.saveEmployee(employee);
 		return "redirect:/";
-
 	}
 	
 	
-
 	@GetMapping("/showFormForUpdate/{Id}")
 	public String showFormForUpdate(@PathVariable(value = "Id") Integer Id, Model model) {
 
@@ -61,5 +56,4 @@ public class EmployeeController {
 		return "redirect:/";
 
 	}
-
 }
