@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;springsecutity-LoginForm&apos;" deleteContents="false" description="Delete resource &apos;springsecutity-LoginForm&apos;" element1="/springsecutity-LoginForm" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1664857592436"/>&#x0A;<refactoring comment="Delete resource &apos;Student-LoginForm&apos;" deleteContents="false" description="Delete resource &apos;Student-LoginForm&apos;" element1="/Student-LoginForm" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1665032311125"/>
-</session>
